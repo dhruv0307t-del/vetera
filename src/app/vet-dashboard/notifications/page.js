@@ -35,7 +35,7 @@ export default function NotificationsPage() {
       {notifications.length === 0 ? (
         <div className="text-center py-20 bg-white rounded-2xl border text-slate-400">
           <FaBell className="text-5xl mx-auto mb-4 opacity-30" />
-          <p>No notifications yet. You're all caught up!</p>
+          <p>No notifications yet. You&apos;re all caught up!</p>
         </div>
       ) : (
         <div className="space-y-3">

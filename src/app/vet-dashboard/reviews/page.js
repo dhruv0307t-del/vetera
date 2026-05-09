@@ -67,7 +67,7 @@ export default function ReviewsPage() {
               </div>
               <Stars rating={r.rating} />
             </div>
-            {r.comment && <p className="text-slate-600 text-sm leading-relaxed">"{r.comment}"</p>}
+            {r.comment && <p className="text-slate-600 text-sm leading-relaxed">&quot;{r.comment}&quot;</p>}
           </div>
         ))}
       </div>

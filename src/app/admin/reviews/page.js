@@ -103,7 +103,7 @@ export default function ReviewsPage() {
               <StarRating rating={r.rating} />
               {r.comment && (
                 <p style={{ color: "#9ca3af", fontSize: "13px", marginTop: "10px", lineHeight: 1.6, fontStyle: "italic" }}>
-                  "{r.comment}"
+                  &quot;{r.comment}&quot;
                 </p>
               )}
               <div style={{ color: "#4b5563", fontSize: "11px", marginTop: "10px" }}>

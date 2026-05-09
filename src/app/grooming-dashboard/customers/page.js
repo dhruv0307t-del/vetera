@@ -38,7 +38,7 @@ const CustomersPage = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-2xl font-black text-slate-800">Customer Management</h1>
-          <p className="text-slate-500 text-sm">Maintain and view your grooming shop's client directory.</p>
+          <p className="text-slate-500 text-sm">Maintain and view your grooming shop&apos;s client directory.</p>
         </div>
         <button className="bg-pink-500 hover:bg-pink-600 text-white px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 shadow-lg shadow-pink-500/20 transition-all">
           <FaPlus /> Add Customer

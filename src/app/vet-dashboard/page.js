@@ -159,7 +159,7 @@ export default function VetDashboardHome() {
             </div>
             <div className="p-3 bg-slate-50 border border-slate-100 rounded-xl">
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Follow-up</p>
-              <p className="text-sm font-semibold text-slate-800">Call Alice about Charlie's blood test results.</p>
+              <p className="text-sm font-semibold text-slate-800">Call Alice about Charlie&apos;s blood test results.</p>
             </div>
           </div>
           <button className="w-full mt-4 py-2 border border-slate-200 text-sm font-bold text-slate-600 rounded-xl hover:bg-slate-50">

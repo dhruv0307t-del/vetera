@@ -8,7 +8,7 @@ const AnalyticsPage = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-2xl font-black text-slate-800">Business Analytics</h1>
-          <p className="text-slate-500 text-sm">Deep dive into your shop's performance and growth.</p>
+          <p className="text-slate-500 text-sm">Deep dive into your shop&apos;s performance and growth.</p>
         </div>
         <button className="bg-slate-800 hover:bg-slate-900 text-white px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 transition-all">
           <FaDownload /> Export Report

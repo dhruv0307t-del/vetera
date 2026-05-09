@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { toast } from "react-toastify";
 import { FaCheck, FaTimes, FaRedo, FaClock } from "react-icons/fa";
 
@@ -22,7 +22,7 @@ export default function VetAppointmentsPage() {
 
   const userId = typeof window !== "undefined" ? localStorage.getItem("userId") : null;
 
-  const fetchAppts = async () => {
+  const fetchAppts = useCallback(async () => {
     setLoading(true);
     try {
       const res = await fetch(`/api/vet/appointments?userId=${userId}&status=${tab}`);
@@ -30,9 +30,9 @@ export default function VetAppointmentsPage() {
       if (d.success) setAppts(d.data);
     } catch { toast.error("Failed to load appointments"); }
     finally { setLoading(false); }
-  };
+  }, [userId, tab]);
 
-  useEffect(() => { if (userId) fetchAppts(); }, [tab]);
+  useEffect(() => { if (userId) fetchAppts(); }, [userId, fetchAppts]);
 
   const updateStatus = async (appointmentId, status) => {
     try {

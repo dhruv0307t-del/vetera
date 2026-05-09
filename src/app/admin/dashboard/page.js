@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const StatCard = ({ icon, label, value, sub, color, href, trend }) => {
   const router = useRouter();

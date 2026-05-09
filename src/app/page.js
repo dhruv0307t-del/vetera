@@ -291,7 +291,7 @@ const HomePage = () => {
             <div className="how-number">01</div>
             <span className="how-pet">🐕</span>
             <div className="how-title">Create Your Pet Profile</div>
-            <div className="how-desc">Add your pet's details — breed, age, weight, medical history. VetEra builds a smart health dashboard tailored just for them.</div>
+            <div className="how-desc">Add your pet&apos;s details — breed, age, weight, medical history. VetEra builds a smart health dashboard tailored just for them.</div>
           </div>
           <div className="how-card reveal reveal-d2">
             <div className="how-number">02</div>
@@ -342,7 +342,7 @@ const HomePage = () => {
               <div className="eyebrow-line"></div>
               <span className="eyebrow-text">Why VetEra</span>
             </div>
-            <h2 className="section-h2">Your pet's health,<br /><em>always in reach</em></h2>
+            <h2 className="section-h2">Your pet&apos;s health,<br /><em>always in reach</em></h2>
             <p className="section-p">From real-time health monitoring to instant vet booking, VetEra puts everything your pet needs right in the palm of your hand.</p>
 
             <div className="feature-items">
@@ -393,7 +393,7 @@ const HomePage = () => {
               <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=200&h=200&fit=crop&q=80" alt="Bruno" />
             </div>
             <div className="testi-stars">★★★★★</div>
-            <div className="testi-text">"VetEra completely changed how I manage Bruno's health. The dashboard is so intuitive — I can track everything from one place. Booking a vet has never been this easy!"</div>
+            <div className="testi-text">&quot;VetEra completely changed how I manage Bruno&apos;s health. The dashboard is so intuitive — I can track everything from one place. Booking a vet has never been this easy!&quot;</div>
             <div className="testi-author">
               <div className="testi-avatar-text">👩</div>
               <div>
@@ -407,7 +407,7 @@ const HomePage = () => {
               <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=200&h=200&fit=crop&q=80" alt="Whiskers" />
             </div>
             <div className="testi-stars">★★★★★</div>
-            <div className="testi-text">"The emergency feature saved Whiskers when she needed immediate care at 2 AM. Found a vet, booked, and got help within 15 minutes. Absolutely life-saving app."</div>
+            <div className="testi-text">&quot;The emergency feature saved Whiskers when she needed immediate care at 2 AM. Found a vet, booked, and got help within 15 minutes. Absolutely life-saving app.&quot;</div>
             <div className="testi-author">
               <div className="testi-avatar-text">👨</div>
               <div>
@@ -421,7 +421,7 @@ const HomePage = () => {
               <img src="https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=200&h=200&fit=crop&q=80" alt="Coco" />
             </div>
             <div className="testi-stars">★★★★★</div>
-            <div className="testi-text">"The pet health monitoring is incredible. Coco's vet can access her records during appointments and the health trend charts give me total peace of mind."</div>
+            <div className="testi-text">&quot;The pet health monitoring is incredible. Coco&apos;s vet can access her records during appointments and the health trend charts give me total peace of mind.&quot;</div>
             <div className="testi-author">
               <div className="testi-avatar-text">👩</div>
               <div>

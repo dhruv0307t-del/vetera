@@ -99,7 +99,7 @@ const ReviewsPage = () => {
               </div>
 
               <p className="text-sm text-slate-600 leading-relaxed italic">
-                "{review.comment}"
+                &quot;{review.comment}&quot;
               </p>
 
               {review.replied ? (

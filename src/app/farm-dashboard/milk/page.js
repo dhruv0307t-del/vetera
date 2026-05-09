@@ -180,7 +180,7 @@ export default function MilkIntelligence() {
              </tbody>
            </table>
            {logs.length === 0 && (
-             <div className="text-center py-10 text-slate-500">No milk logs found. Click "Enter Log" to add one.</div>
+             <div className="text-center py-10 text-slate-500">No milk logs found. Click &quot;Enter Log&quot; to add one.</div>
            )}
          </div>
       </div>
