@@ -150,7 +150,7 @@ export default function HealthWizard() {
             <InputField label="Pet Name" section="petProfile" field="petName" />
             <SelectMenu label="Species" section="petProfile" field="species" options={["Dog", "Cat", "Other"]} />
             <InputField label="Breed" section="petProfile" field="breed" />
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <InputField label="Date of Birth" type="date" section="petProfile" field="dateOfBirth" />
               <div className="mb-4 flex flex-col">
                 <label className="mb-1 font-medium text-gray-500">Auto-calculated Age (Years)</label>

@@ -96,7 +96,7 @@ export default function EmergencyPage() {
         </div>
       </div>
 
-      <div style={{ maxWidth: 1160, margin: "0 auto", padding: "32px 16px", display: "grid", gridTemplateColumns: "1fr 340px", gap: 24, alignItems: "start" }}>
+      <div className="emergGrid" style={{ maxWidth: 1160, margin: "0 auto", padding: "32px 16px", display: "grid", gridTemplateColumns: "1fr 340px", gap: 24, alignItems: "start" }}>
         {/* Form card */}
         <div style={{ background: "#fff", borderRadius: 20, border: "1.5px solid #fee2e2", boxShadow: "0 4px 24px rgba(220,38,38,0.08)", overflow: "hidden" }}>
           {/* Progress */}
