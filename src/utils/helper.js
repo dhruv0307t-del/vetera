@@ -1,24 +1,10 @@
 export const NAV_LINKS_LIST = [
-  {
-    link: "home",
-    href: "/",
-  },
-  {
-    link: "health monitoring",
-    href: "#health-monitoring",
-  },
-  {
-    link: "Appointments",
-    href: "/appointments/view",
-  },
-  {
-    link: "features",
-    href: "#features",
-  },
-  {
-    link: "contact",
-    href: "#contact",
-  },
+  { link: "Home", href: "/" },
+  { link: "Health Monitoring", href: "/health-monitoring" },
+  { link: "Appointments", href: "/appointments" },
+  { link: "Pet Services", href: "/pet-services" },
+  { link: "Community", href: "/community" },
+  { link: "Contact", href: "#contact" },
 ];
 
 export const ROLES_DATA = [

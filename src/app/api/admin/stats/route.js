@@ -4,17 +4,33 @@ import Farm from "@/models/Farm";
 import Doctor from "@/models/Doctor";
 import Animal from "@/models/Animal";
 import Appointment from "@/models/Appointment";
+import Earning from "@/models/Earning";
 
 export async function GET() {
   await connectDB();
 
+  const [totalUsers, petOwners, vets, farms, animals, appointments, pendingApprovals, groomingShops, retailers] =
+    await Promise.all([
+      User.countDocuments(),
+      User.countDocuments({ role: "PET_OWNER" }),
+      User.countDocuments({ role: "VET" }),
+      Farm.countDocuments(),
+      Animal.countDocuments(),
+      Appointment.countDocuments(),
+      User.countDocuments({ isApproved: false }),
+      User.countDocuments({ role: "GROOMING" }),
+      User.countDocuments({ role: "RETAILER" }),
+    ]);
+
   return Response.json({
-    totalUsers: await User.countDocuments(),
-    petOwners: await User.countDocuments({ role: "PET_OWNER" }),
-    vets: await User.countDocuments({ role: "VET" }),
-    farms: await Farm.countDocuments(),
-    animals: await Animal.countDocuments(),
-    appointments: await Appointment.countDocuments(),
-    pendingApprovals: await User.countDocuments({ isApproved: false }),
+    totalUsers,
+    petOwners,
+    vets,
+    farms,
+    animals,
+    appointments,
+    pendingApprovals,
+    groomingShops,
+    retailers,
   });
 }

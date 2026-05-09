@@ -4,13 +4,14 @@ const UserSchema = new mongoose.Schema(
   {
     role: {
       type: String,
-      enum: ["ADMIN", "PET_OWNER", "FARM_OWNER", "VET", "RETAILER", "GROOMING"],
+      enum: ["ADMIN", "Pet Owner", "Farm", "Veterinary Doctor", "Retailer", "Grooming Shop", "Customer"],
       required: true,
     },
 
     fullName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     phone: { type: String, required: true },
+    password: { type: String },
 
     address: String,
     city: String,

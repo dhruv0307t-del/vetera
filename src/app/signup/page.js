@@ -1,10 +1,10 @@
-import RoleSelection from "@/components/signup/RoleSelection";
+import SignUp from "@/components/signup/SignUp";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <RoleSelection />
+      <SignUp />
     </div>
   );
 };

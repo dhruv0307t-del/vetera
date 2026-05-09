@@ -22,6 +22,9 @@
   .nav_link {
     @apply relative after:absolute after:w-full sm:after:h-0.5 after:h-px after:bg-blue-950 after:-bottom-1 after:left-0 after:transform after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100;
   }
+  .input {
+    @apply w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-dark-blue transition-all duration-200 text-gray-800;
+  }
 }
 body {
   font-family: "Inter", sans-serif;

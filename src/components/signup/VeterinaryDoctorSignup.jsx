@@ -13,16 +13,56 @@ const VeterinaryDoctorSignup = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    const signupData = {
-      ...data,
-      role: "Veterinary Doctor",
-    };
+  const onSubmit = async (data) => {
+    try {
+      // 1. Core Signup
+      const signupRes = await fetch("/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: data.name,
+          email: data.email,
+          phone: data.phone,
+          password: data.password,
+          role: "VET",
+        })
+      });
+      const signupJson = await signupRes.json();
+      
+      if (!signupJson.success) {
+        return toast.error(signupJson.message || "Signup failed");
+      }
 
-    // Simulate API call
-    console.log(signupData);
-    toast.success("Veterinary Doctor account created successfully!");
-    router.push("/login");
+      // 2. Push Professional & "Mocked" Doc URLs to onboard KYC Database
+      const vetRes = await fetch("/api/vet/onboard", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: signupJson.user._id,
+          qualification: data.qualification,
+          specialization: [data.specialization],
+          experienceYears: data.experience,
+          clinicName: data.clinicName,
+          clinicAddress: `${data.clinicAddress}, ${data.city}, ${data.state}, ${data.country}`,
+          licenseNumber: data.licenseNumber,
+          documents: {
+            degreeCertificate: "https://example.com/degree-mock.pdf",
+            licenseCertificate: "https://example.com/license-mock.pdf",
+            governmentId: "https://example.com/id-mock.pdf"
+          }
+        })
+      });
+      const vetJson = await vetRes.json();
+
+      if (vetJson.success) {
+        toast.success("Registration complete! Your KYC application is pending Admin review.");
+        router.push("/login");
+      } else {
+        toast.error("Failed to submit Vet KYC Profile: " + vetJson.message);
+      }
+    } catch (err) {
+      toast.error("An error occurred trying to connect to the server.");
+    }
   };
 
   return (

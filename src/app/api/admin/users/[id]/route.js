@@ -37,3 +37,17 @@ export async function PUT(req, { params }) {
   await User.findByIdAndUpdate(params.id, body);
   return Response.json({ success: true });
 }
+
+export async function PATCH(req, { params }) {
+  await connectDB();
+  const { action } = await req.json();
+
+  const isApproved = action === "approve" ? true : action === "reject" ? false : undefined;
+
+  if (isApproved === undefined) {
+    return Response.json({ success: false, message: "Invalid action" }, { status: 400 });
+  }
+
+  await User.findByIdAndUpdate(params.id, { isApproved });
+  return Response.json({ success: true, message: `User ${action}d successfully` });
+}

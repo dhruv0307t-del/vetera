@@ -56,6 +56,7 @@ export async function POST(req) {
     return Response.json({
       success: true,
       message: "Signup successful",
+      user: { _id: user._id, email: user.email }
     });
   } catch (err) {
     console.error("SIGNUP ERROR:", err);

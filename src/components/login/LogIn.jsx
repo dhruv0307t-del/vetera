@@ -15,14 +15,40 @@ const LogIn = () => {
   } = useForm();
   const router = useRouter();
 
-  const onSubmit = (data) => {
-    console.log("Login Data:", data);
+  const onSubmit = async (data) => {
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
-    // TODO: You can add API login logic here
+      const result = await res.json();
 
-    toast.success("Login successful!");
-    localStorage.setItem("isLoggedIn", "true");
-    router.push("/");
+      if (res.ok && result.success) {
+        toast.success("Login successful!");
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("userRole", result.role);
+        
+        if (result.role === "ADMIN" || result.role === "admin") {
+          router.push("/admin/dashboard");
+        } else if (result.role === "Farm" || result.role === "FARM") {
+          router.push("/farm-dashboard");
+        } else if ((result.role === "Veterinary Doctor" || result.role === "Grooming Shop") && !result.isApproved) {
+          router.push("/onboarding");
+        } else if (result.role === "Veterinary Doctor" && result.isApproved) {
+          router.push("/vet-dashboard");
+        } else if (result.role === "Grooming Shop" && result.isApproved) {
+          router.push("/grooming-dashboard");
+        } else {
+          router.push("/");
+        }
+      } else {
+        toast.error(result.message || "Invalid credentials");
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    }
   };
 
   return (

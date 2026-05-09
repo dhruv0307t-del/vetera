@@ -34,6 +34,17 @@ export async function POST(req) {
       { expiresIn: "7d" }
     );
 
-    // ✅ SET COOKIE (THIS WAS MISSING)
-    cookies().set("token", token, {
+    // ✅ SET COOKIE
+    (await cookies()).set("token", token, {
       httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 60 * 60 * 24 * 7,
+      path: "/",
+    });
+
+    return Response.json({ success: true, message: "Logged in successfully", role: user.role, isApproved: user.isApproved, id: user._id });
+  } catch (error) {
+    console.error("LOGIN ERROR:", error);
+    return Response.json({ success: false, message: error.message, stack: String(error.stack) }, { status: 500 });
+  }
+}

@@ -18,16 +18,34 @@ const SignUp = () => {
 
   const selectedRole = watch("role");
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     if (!data.role) {
       toast.error("Please select a role.");
       return;
     }
 
-    // Simulate API call
-    console.log(data);
-    toast.success("Account created successfully!");
-    router.push("/login");
+    try {
+      const res = await fetch("/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          role: data.role,
+          fullName: data.name,
+          email: data.email,
+          password: data.password,
+          phone: "0000000000", // default since UI doesn't have it
+        }),
+      });
+      const result = await res.json();
+      if (res.ok && result.success) {
+        toast.success("Account created successfully!");
+        router.push("/login");
+      } else {
+        toast.error(result.message || "Failed to create account");
+      }
+    } catch (err) {
+      toast.error("An error occurred during signup");
+    }
   };
 
   return (

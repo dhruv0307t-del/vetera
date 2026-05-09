@@ -17,6 +17,7 @@ const DoctorSchema = new mongoose.Schema(
 
     licenseNumber: String,
     registrationId: String,
+    licenseExpiry: Date,
 
     consultationFee: Number,
     homeVisitFee: Number,
@@ -28,6 +29,30 @@ const DoctorSchema = new mongoose.Schema(
     rating: {
       type: Number,
       default: 0,
+    },
+    
+    // KYC and Verification
+    verificationStatus: { 
+      type: String, 
+      enum: ['PENDING', 'APPROVED', 'REJECTED'], 
+      default: 'PENDING' 
+    },
+    documents: {
+      degreeCertificate: String,
+      licenseCertificate: String,
+      governmentId: String,
+      additionalCertifications: String
+    },
+    adminRemarks: String,
+
+    // Profile extras
+    bio: { type: String, default: "" },
+    profilePhoto: { type: String, default: "" },
+    isProfileVisible: { type: Boolean, default: true },
+    availableConsultationTypes: {
+      type: [String],
+      enum: ["ONLINE", "OFFLINE", "HOME_VISIT"],
+      default: ["ONLINE", "OFFLINE"],
     },
   },
   { timestamps: true }
