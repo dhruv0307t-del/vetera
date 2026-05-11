@@ -2,7 +2,6 @@ import { AppointmentsProvider } from "@/context/AppointmentsContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
-import Header from "@/components/common/Header";
 
 export const metadata = {
   title: "VetEra – Your Pet's Health Companion",
@@ -51,7 +50,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Header />
         <AppointmentsProvider>{children}</AppointmentsProvider>
         <ToastContainer position="top-right" autoClose={3000} />
       </body>

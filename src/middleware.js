@@ -49,11 +49,30 @@ export function middleware(req) {
     }
   }
 
+  // ── USER AUTH HANDLING ──
+  const protectedUserRoutes = ["/health-monitoring", "/appointments", "/community", "/emergency"];
+  const isProtectedUserRoute = protectedUserRoutes.some(route => pathname.startsWith(route));
+
+  if (isProtectedUserRoute) {
+    const token = req.cookies.get("token")?.value;
+
+    if (!token) {
+      return NextResponse.redirect(new URL("/login", req.url));
+    }
+  }
+
   return NextResponse.next();
 }
 
 // ── CONFIG ──
-// Apply middleware to API and Admin routes
+// Apply middleware to API, Admin, and Protected User routes
 export const config = {
-  matcher: ["/admin/:path*", "/api/:path*"],
+  matcher: [
+    "/admin/:path*", 
+    "/api/:path*", 
+    "/health-monitoring/:path*", 
+    "/appointments/:path*", 
+    "/community/:path*", 
+    "/emergency/:path*"
+  ],
 };

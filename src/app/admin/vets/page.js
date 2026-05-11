@@ -115,11 +115,12 @@ export default function AdminVetsPage() {
             const vStatus = vet.verificationStatus || "PENDING";
             const vColor = statusColor[vStatus] || "#fbbf24";
             return (
-              <div key={vet._id} style={{
+                <div key={vet._id} style={{
                 background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)",
                 borderRadius: "16px", padding: "24px", transition: "all 0.3s ease",
-                position: "relative", overflow: "hidden"
+                position: "relative", overflow: "hidden", cursor: "pointer"
               }}
+                onClick={() => { setSelectedVet(vet); setAdminRemarks(vet.adminRemarks || ""); }}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = `${vColor}30`; e.currentTarget.style.background = "rgba(255,255,255,0.05)"; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)"; e.currentTarget.style.background = "rgba(255,255,255,0.03)"; }}
               >
@@ -157,7 +158,7 @@ export default function AdminVetsPage() {
                   ))}
                 </div>
 
-                <button onClick={() => { setSelectedVet(vet); setAdminRemarks(vet.adminRemarks || ""); }} style={{
+                <button onClick={(e) => { e.stopPropagation(); setSelectedVet(vet); setAdminRemarks(vet.adminRemarks || ""); }} style={{
                   width: "100%", padding: "10px", borderRadius: "10px", fontSize: "13px", fontWeight: 600,
                   background: "rgba(139,92,246,0.15)", border: "1px solid rgba(139,92,246,0.3)",
                   color: "#a78bfa", cursor: "pointer", transition: "all 0.2s",

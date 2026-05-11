@@ -8,11 +8,9 @@ export const NAV_LINKS_LIST = [
 ];
 
 export const ROLES_DATA = [
-  "Customer",
   "Pet Owner",
   "Veterinary Doctor",
   "Grooming Shop",
-  "Retailer",
   "Farm",
 ];
 

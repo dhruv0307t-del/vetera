@@ -7,16 +7,12 @@ const RoleSelection = () => {
   const router = useRouter();
 
   const handleRoleSelect = (role) => {
-    if (role === "Customer") {
-      router.push("/signup/customer");
-    } else if (role === "Pet Owner") {
+    if (role === "Pet Owner") {
       router.push("/signup/pet-owner");
     } else if (role === "Veterinary Doctor") {
       router.push("/signup/veterinary-doctor");
     } else if (role === "Grooming Shop") {
       router.push("/signup/grooming-shop");
-    } else if (role === "Retailer") {
-      router.push("/signup/retailer");
     } else if (role === "Farm") {
       router.push("/signup/farm"); // ✅ NEW
     }
