@@ -29,6 +29,11 @@ export async function PATCH(req) {
 
     if (!updatedVet) return NextResponse.json({ success: false, message: "Doctor not found" }, { status: 404 });
 
+    const User = (await import("@/models/User")).default;
+    await User.findByIdAndUpdate(updatedVet.userId, {
+      isApproved: verificationStatus === "APPROVED" ? true : verificationStatus === "REJECTED" ? false : null
+    });
+
     return NextResponse.json({
       success: true,
       message: `Vet has been successfully marked as ${verificationStatus}`,

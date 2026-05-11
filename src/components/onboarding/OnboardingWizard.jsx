@@ -19,6 +19,15 @@ export default function OnboardingWizard() {
       const res = await fetch("/api/onboard");
       const result = await res.json();
       if (result.success) {
+        if (result.data.isUserApproved === true) {
+          if (result.data.role === "Veterinary Doctor") {
+            router.push("/vet-dashboard");
+            return;
+          } else if (result.data.role === "Grooming Shop") {
+            router.push("/grooming-dashboard");
+            return;
+          }
+        }
         setProfile(result.data);
       }
     } catch (e) { console.error(e); }

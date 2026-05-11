@@ -19,7 +19,10 @@ export async function GET() {
       profile = await VerificationProfile.create({ userId: decoded.id, role: decoded.role });
     }
 
-    return NextResponse.json({ success: true, data: profile });
+    const User = (await import("@/models/User")).default;
+    const user = await User.findById(decoded.id).select("isApproved");
+
+    return NextResponse.json({ success: true, data: { ...profile.toObject(), isUserApproved: user?.isApproved } });
   } catch (error) {
     return NextResponse.json({ success: false, message: error.message }, { status: 500 });
   }
