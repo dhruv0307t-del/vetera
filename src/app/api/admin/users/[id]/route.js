@@ -5,8 +5,9 @@ import Doctor from "@/models/Doctor";
 
 export async function GET(req, { params }) {
   await connectDB();
+  const { id } = await params;
 
-  const user = await User.findById(params.id).lean();
+  const user = await User.findById(id).lean();
   if (!user) {
     return Response.json({ success: false }, { status: 404 });
   }
@@ -32,14 +33,16 @@ export async function GET(req, { params }) {
 
 export async function PUT(req, { params }) {
   await connectDB();
+  const { id } = await params;
   const body = await req.json();
 
-  await User.findByIdAndUpdate(params.id, body);
+  await User.findByIdAndUpdate(id, body);
   return Response.json({ success: true });
 }
 
 export async function PATCH(req, { params }) {
   await connectDB();
+  const { id } = await params;
   const { action } = await req.json();
 
   const isApproved = action === "approve" ? true : action === "reject" ? false : undefined;
@@ -48,6 +51,6 @@ export async function PATCH(req, { params }) {
     return Response.json({ success: false, message: "Invalid action" }, { status: 400 });
   }
 
-  await User.findByIdAndUpdate(params.id, { isApproved });
+  await User.findByIdAndUpdate(id, { isApproved });
   return Response.json({ success: true, message: `User ${action}d successfully` });
 }

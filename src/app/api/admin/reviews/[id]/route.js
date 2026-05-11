@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function DELETE(req, { params }) {
   try {
     await connectDB();
-    const { id } = params;
+    const { id } = await params;
     await Review.findByIdAndDelete(id);
     return NextResponse.json({ success: true, message: "Review deleted" });
   } catch (error) {

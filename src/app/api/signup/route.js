@@ -34,7 +34,7 @@ export async function POST(req) {
       email,
       phone,
       password,
-      isApproved: false,
+      isApproved: null,
     });
 
     console.log("USER CREATED:", user._id);
