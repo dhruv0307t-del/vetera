@@ -8,8 +8,14 @@ import { NextResponse } from "next/server";
 export async function GET(req) {
   try {
     await connectDB();
-    const url = new URL(req.url);
-    const userId = url.searchParams.get("userId");
+    const { cookies } = await import("next/headers");
+    const jwt = await import("jsonwebtoken");
+    const cookieStore = await cookies();
+    const token = cookieStore.get("token")?.value;
+    if (!token) return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
+    
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = decoded.id;
 
     if (!userId) return NextResponse.json({ success: false, message: "userId required" }, { status: 400 });
 
